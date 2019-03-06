@@ -36,20 +36,31 @@ const calculatorSlice = createSlice({
       }
     },
     updateOperator(state, { payload: operator }) {
-      state.operations.push(Number(state.value));
-      state.operations.push(operator);
-      state.waitingForValue = true;
+      if (state.waitingForValue) {
+        state.operations = [Number(state.value), operator];
+      } else {
+        state.operations.push(Number(state.value));
+        state.operations.push(operator);
+        state.waitingForValue = true;
 
-      // commit fully entered calculations
-      if (state.operations.length > 3) {
-        state.operations = [
-          calculateValue(state.operations),
-          state.operations[3]
-        ];
+        // commit fully entered calculations
+        if (state.operations.length > 3) {
+          state.operations = [
+            calculateValue(state.operations),
+            state.operations[3]
+          ];
+        }
+
+        // show running total while waiting for input
+        state.value = state.operations[0];
       }
 
-      // show running total while waiting for input
-      state.value = state.operations[0];
+      // if received equals operator commit all outstanding calculations and clear operations
+      if (state.operations[state.operations.length - 1] === "=") {
+        state.value = state.operations[0];
+        state.operations = [];
+        state.waitingForValue = true;
+      }
     },
     clearAll() {
       return defaultState;

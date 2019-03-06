@@ -14,6 +14,12 @@ export const CalcButton = ({ onClick, label }) => {
         border: none;
         color: white;
         background-color: ${colors.eeBlue};
+        :hover {
+          background-color: #3f9fd0;
+        }
+        :active {
+          background-color: #126e9c;
+        }
       `}
     >
       {label}

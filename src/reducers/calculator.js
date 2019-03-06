@@ -12,9 +12,11 @@ const calculateValue = ([val1, operator, val2]) => {
       return val1 + val2;
     case "-":
       return val1 - val2;
+    case "÷":
     case "/":
       return val1 / val2;
     case "x":
+    case "*":
       return val1 * val2;
     default:
       throw new Error("unknown operator");

@@ -1,10 +1,10 @@
 import { configureStore } from "redux-starter-kit";
-import { postsReducer } from "./reducers/posts";
+import { calculatorReducer } from "./reducers/calculator";
 
 export const createStore = () => {
   return configureStore({
     reducer: {
-      posts: postsReducer
+      calculator: calculatorReducer
     }
   });
 };

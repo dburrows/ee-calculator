@@ -4,7 +4,8 @@ import "styled-components/macro";
 import { Normalize } from "styled-normalize";
 import { colors } from "./constants/colors";
 import { ReactComponent as Logo } from "./assets/ee-logo.svg";
-
+import { ReadoutContainer } from "./containers/ReadoutContainer";
+import { KeypadContainer } from "./containers/KeypadContainer";
 const GlobalStyle = createGlobalStyle`
   html {
     box-sizing: border-box;
@@ -44,6 +45,8 @@ class App extends Component {
             `}
           />
         </header>
+        <ReadoutContainer />
+        <KeypadContainer />
       </div>
     );
   }

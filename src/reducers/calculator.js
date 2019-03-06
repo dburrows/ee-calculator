@@ -1,8 +1,24 @@
 import { createSlice } from "redux-starter-kit";
 
-const defaultState = {
+export const defaultState = {
   operations: [],
-  value: 0
+  value: 0,
+  waitingForValue: true
+};
+
+const calculateValue = ([val1, operator, val2]) => {
+  switch (operator) {
+    case "+":
+      return val1 + val2;
+    case "-":
+      return val1 - val2;
+    case "/":
+      return val1 / val2;
+    case "x":
+      return val1 * val2;
+    default:
+      throw new Error("unknown operator");
+  }
 };
 
 const calculatorSlice = createSlice({
@@ -10,10 +26,28 @@ const calculatorSlice = createSlice({
   initialState: defaultState,
   reducers: {
     updateValue(state, { payload: value }) {
-      state.operations.push(value);
+      if (state.waitingForValue) {
+        state.value = value;
+        state.waitingForValue = false;
+      } else {
+        state.value = `${state.value}${value}`;
+      }
     },
-    updateOperator(state, { payload: value }) {
-      state.operations.push(value);
+    updateOperator(state, { payload: operator }) {
+      state.operations.push(Number(state.value));
+      state.operations.push(operator);
+      state.waitingForValue = true;
+
+      // commit fully entered calculations
+      if (state.operations.length > 3) {
+        state.operations = [
+          calculateValue(state.operations),
+          state.operations[3]
+        ];
+      }
+
+      // show running total while waiting for input
+      state.value = state.operations[0];
     }
   }
 });

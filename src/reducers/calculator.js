@@ -50,6 +50,9 @@ const calculatorSlice = createSlice({
 
       // show running total while waiting for input
       state.value = state.operations[0];
+    },
+    clearAll() {
+      return defaultState;
     }
   }
 });
@@ -57,6 +60,6 @@ const calculatorSlice = createSlice({
 // Extract the action creators object and the reducer
 const { actions, reducer } = calculatorSlice;
 // Extract and export each action creator by name
-export const { updateValue, updateOperator } = actions;
+export const { updateValue, updateOperator, clearAll } = actions;
 // Export the reducer, either as a default or named export
 export const calculatorReducer = reducer;

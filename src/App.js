@@ -22,7 +22,10 @@ const GlobalStyle = createGlobalStyle`
   body {
     box-sizing: border-box;
     padding: 10px;
-    background-color: ${colors.eeLightGrey}
+    background-color: ${colors.eeLightGrey};
+     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
   }
 `;
 

@@ -40,3 +40,11 @@ npm run test
 ```
 
 in the root directory will run all tests and then watch for code changes and re-run.
+
+## Coverage
+
+To see test coverage run
+
+```
+npm run test -- --coverage
+```

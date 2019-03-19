@@ -16,6 +16,7 @@ const calculateValue = ([val1, operator, val2]) => {
     case "/":
       return val1 / val2;
     case "x":
+    case "X":
     case "*":
       return val1 * val2;
     default:

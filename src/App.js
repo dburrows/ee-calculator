@@ -21,12 +21,15 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     box-sizing: border-box;
-    padding: 10px;
+    padding: 2vw;
     background-color: ${colors.eeLightGrey};
-     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
+    
+    @import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
   }
+
 `;
 
 class App extends Component {
@@ -40,13 +43,20 @@ class App extends Component {
           css={`
             background-color: ${colors.eeBlue};
             padding: 3px 1px 1px 4px;
+            border-radius: 3vw 3vw 0 0;
           `}
         >
-          <Logo
+          <div
             css={`
-              height: 100px;
+              padding: 5vw;
             `}
-          />
+          >
+            <Logo
+              css={`
+                height: 10vw;
+              `}
+            />
+          </div>
         </header>
         <ReadoutContainer />
         <KeypadContainer />

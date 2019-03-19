@@ -2,14 +2,21 @@ import React from "react";
 import styled from "styled-components/macro";
 import { CalcButton } from "./CalcButton";
 import { colors } from "../constants/colors";
+import { fontStacks } from "../constants/fontStacks";
+
+const gap = "3vw";
 
 const Wrapper = styled.div`
+  width: 96vw;
+  height: 96vw;
   display: grid;
+  font-family: ${fontStacks.mono};
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
-  grid-gap: 10px;
-  background-color: ${colors.eeGrey};
-  padding: 10px;
+  grid-gap: ${gap};
+  background-color: ${colors.eeBlue};
+  padding: ${gap};
+  border-radius: 0 0 3vh 3vh;
 `;
 
 const Fns = styled.div`
@@ -18,7 +25,7 @@ const Fns = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr;
-  grid-gap: 10px;
+  grid-gap: ${gap};
 `;
 
 const Operators = styled.div`
@@ -27,7 +34,7 @@ const Operators = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(5, 1fr);
-  grid-gap: 10px;
+  grid-gap: ${gap};
 `;
 
 const Numbers = styled.div`
@@ -36,7 +43,7 @@ const Numbers = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(4, 1fr);
-  grid-gap: 10px;
+  grid-gap: ${gap};
 `;
 
 export const Keypad = ({ updateValue, updateOperator, clearAll }) => {
@@ -49,7 +56,7 @@ export const Keypad = ({ updateValue, updateOperator, clearAll }) => {
       </Fns>
       <Operators>
         {" "}
-        {["÷", "x", "-", "+", "="].map(key => {
+        {["÷", "X", "-", "+", "="].map(key => {
           return (
             <CalcButton
               key={key}
